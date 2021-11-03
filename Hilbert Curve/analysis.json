@@ -1,0 +1,198 @@
+[
+    {
+        "Degree": "General d",
+        "Lines": "2^(2*d) - 1",
+        "Turns": " If Odd --> 4*(Previous Turns) - 1, If Even --> 4*(Previous Turns) + 1 ",
+        "X-span": "2^d - 1",
+        "Y-span": 0,
+        "Max-Y-Reach": "2^d - 1",
+        "line-type": [
+            "Vertical Up (2^(2*d - 2))",
+            "Horizontal Right (2^(d - 1)*(2^(d - 1) + 1) - 1)",
+            "Vertical Down (2^(2*d - 2))",
+            "Horizontal Left (2^(d - 1)*(2^(d - 1) - 1))"
+        ]
+    },
+    {
+        "Degree": 1,
+        "Lines": 3,
+        "Turns": 3,
+        "X-span": 1,
+        "Y-span": 0,
+        "Max-Y-Reach": 1,
+        "line-type": [
+            1,
+            1,
+            1,
+            0
+        ]
+    },
+    {
+        "Degree": 2,
+        "Lines": 15,
+        "Turns": 13,
+        "X-span": 3,
+        "Y-span": 0,
+        "Max-Y-Reach": 3,
+        "line-type": [
+            4,
+            5,
+            4,
+            2
+        ]
+    },
+    {
+        "Degree": 3,
+        "Lines": 63,
+        "Turns": 51,
+        "X-span": 7,
+        "Y-span": 0,
+        "Max-Y-Reach": 7,
+        "line-type": [
+            16,
+            19,
+            16,
+            12
+        ]
+    },
+    {
+        "Degree": 4,
+        "Lines": 255,
+        "Turns": 205,
+        "X-span": 15,
+        "Y-span": 0,
+        "Max-Y-Reach": 15,
+        "line-type": [
+            64,
+            71,
+            64,
+            56
+        ]
+    },
+    {
+        "Degree": 5,
+        "Lines": 1023,
+        "Turns": 819,
+        "X-span": 31,
+        "Y-span": 0,
+        "Max-Y-Reach": 31,
+        "line-type": [
+            256,
+            271,
+            256,
+            240
+        ]
+    },
+    {
+        "Degree": 6,
+        "Lines": 4095,
+        "Turns": 3277,
+        "X-span": 63,
+        "Y-span": 0,
+        "Max-Y-Reach": 63,
+        "line-type": [
+            1024,
+            1055,
+            1024,
+            992
+        ]
+    },
+    {
+        "Degree": 7,
+        "Lines": 16383,
+        "Turns": 13107,
+        "X-span": 127,
+        "Y-span": 0,
+        "Max-Y-Reach": 127,
+        "line-type": [
+            4096,
+            4159,
+            4096,
+            4032
+        ]
+    },
+    {
+        "Degree": 8,
+        "Lines": 65535,
+        "Turns": 52429,
+        "X-span": 255,
+        "Y-span": 0,
+        "Max-Y-Reach": 255,
+        "line-type": [
+            16384,
+            16511,
+            16384,
+            16256
+        ]
+    },
+    {
+        "Degree": 9,
+        "Lines": 262143,
+        "Turns": 209715,
+        "X-span": 511,
+        "Y-span": 0,
+        "Max-Y-Reach": 511,
+        "line-type": [
+            65536,
+            65791,
+            65536,
+            65280
+        ]
+    },
+    {
+        "Degree": 10,
+        "Lines": 1048575,
+        "Turns": 838861,
+        "X-span": 1023,
+        "Y-span": 0,
+        "Max-Y-Reach": 1023,
+        "line-type": [
+            262144,
+            262655,
+            262144,
+            261632
+        ]
+    },
+    {
+        "Degree": 11,
+        "Lines": 4194303,
+        "Turns": 3355443,
+        "X-span": 2047,
+        "Y-span": 0,
+        "Max-Y-Reach": 2047,
+        "line-type": [
+            1048576,
+            1049599,
+            1048576,
+            1047552
+        ]
+    },
+    {
+        "Degree": 12,
+        "Lines": 16777215,
+        "Turns": 13421773,
+        "X-span": 4095,
+        "Y-span": 0,
+        "Max-Y-Reach": 4095,
+        "line-type": [
+            4194304,
+            4196351,
+            4194304,
+            4192256
+        ]
+    },
+    {
+        "Degree": 13,
+        "Lines": 67108863,
+        "Turns": 53687091,
+        "X-span": 8191,
+        "Y-span": 0,
+        "Max-Y-Reach": 8191,
+        "line-type": [
+            16777216,
+            16781311,
+            16777216,
+            16773120
+        ]
+    }
+]

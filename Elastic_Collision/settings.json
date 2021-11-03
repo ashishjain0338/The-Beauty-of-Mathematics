@@ -1,0 +1,10 @@
+{
+    "show-table-data": true,
+    "show-plot": true,
+    "fitscreen": true,
+    "stretch": true,
+    "speed-at-last": true,
+    "show-path": false,
+    "solid": true,
+	"manual-close": true
+}
