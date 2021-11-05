@@ -1,5 +1,12 @@
-import turtle
 import simplejson as json
+from turtle import *
+import turtle
+import tkinter as _
+from create_gif import gifconversion
+import os
+import datetime
+
+_.ROUND=_.BUTT
 from draw import drawEllipse, fitToScreen, captureImage, convertPStoPNG
 
 
@@ -36,7 +43,7 @@ def drawsurface(pen, height, width, pen_color="white"):
         pen.left(180)
         pen.fd(60)
 
-
+# subprocess.run("rm " + filename + ".eps")
 def scale(p, lmax, c=10, d=20):
     '''It Scales up the Actual velocities to the range [c, d] so that Collisions could be detected within limit'''
     neg = False
@@ -196,8 +203,7 @@ def simulate(data, writer, pens, specs,settings,limiter = 2000):
 def starter(data, settings, imagefile = None):
     '''This Function generates all the pen and screens'''
     # Setting up the window
-    wn = turtle.Screen()
-    wn.setup(width=1.0, height=1.0) # For Fullscreen
+     # For Fullscreen
     # wn.bgcolor("black")
     wn.title("Collide")
     h = wn.window_height()
@@ -222,13 +228,14 @@ def starter(data, settings, imagefile = None):
         pens[i].speed(penspeed[i])
         pens[i].down()
 
+    pens[8].shape("square")
+    pens[8].shapesize(w / 20 + 200, h / 20 + 200)
     big = pens[1]
     small = pens[2]
     big.shape("square")
     big.shapesize(2, 2)
     small.shape("square")
-    pens[8].shape("square")
-    pens[8].shapesize(w/20 + 200, h/20 + 200)
+
     if not settings["show-path"]:
         big.up()
         small.up()
@@ -285,25 +292,71 @@ def starter(data, settings, imagefile = None):
     if imagefile:
         captureImage(pens[0], imagefile)
 
-    if settings["manual-close"]:
-        turtle.done()
-    else:
-        turtle.Screen().bye()
+    # if settings["manual-close"]:
+    #     turtle.done()
+    # else:
+    #     turtle.Screen().bye()
 
 
-def draw():
-    infile = "Output/Backup/10m50M-10v-5V.json"
+def draw(infile):
+    infile = "Output/Backup/" + infile + ".json"
     with open(infile, 'r') as fp:
         data = json.load(fp)
-    settings = {"show-table-data" : True , "show-plot" : True, "fitscreen" : True, "stretch" : True, "speed-at-last" : False, "show-path" : False, "solid" : True, "manual-close": True}
+    settings = {"show-table-data" : True , "show-plot" : True, "fitscreen" : True, "stretch" : True, "speed-at-last" : True, "show-path" : False, "solid" : True, "manual-close": True}
     starter(data, settings)
+    ontimer(stop, 500)
 
+
+
+
+def stop():
+    global running
+    running = False
+
+def save(counter=[1]):
+    getcanvas().postscript(file = "GIF_Dump/{}.eps".format(counter[0]))
+    counter[0] += 1
+    if running:
+        ontimer(save, int(1000 / FRAMES_PER_SECOND))
+
+def convertToGif(infile, outfile = None):
+    start = datetime.datetime.now()
+    print("Processing started at \t:", start.strftime("%m/%d/%Y, %H:%M:%S"))
+    save()  # start the recording
+    ontimer(draw(infile), 500)
+    done()
+    if outfile == None:
+        outfile = infile
+    gifconversion(outfile)
+    end = datetime.datetime.now()
+    print("Processing Ended at \t:", end.strftime("%m/%d/%Y, %H:%M:%S"))
+    total_time = (end - start)
+    print("Total Processing Time \t:", total_time)
 
 if __name__ == "__main__":
-    files = ["100m10u.json", "2m10u.json", "1m10u.json", "1000m10u.json"]
-    infile = files[0]
-    # Loading data
-    with open(infile, 'r') as fp:
-        data = json.load(fp)
-    settings = {"show-table-data" : True , "show-plot" : True, "fitscreen" : True, "stretch" : True, "speed-at-last" : False, "show-path" : False, "solid" : True, "manual-close": True}
-    starter(data, settings)
+    infile = input("Enter the Backup File you want to create GIF For \t:")
+    global wn
+    wn = turtle.Screen()
+    wn.setup(width=1.0, height=1.0)
+    running = True
+    FRAMES_PER_SECOND = 10
+    convertToGif(infile)
+    print("GIF File created at \Output\GIF\{}.gif".format(infile))
+
+
+## For Testing Purposes
+# 12 Later
+# current = 0
+# find = 12
+# for base, dirs, files in os.walk("Output/Backup/"):
+#     # print('Searching in : ', base)
+#     for Files in files:
+#         if(current > find ):
+#             break
+#         elif(current == find):
+#             current_file = Files.split('.')[0]
+#             print(current_file)
+#             convertToGif(current_file)
+#             break
+#         # print(current, Files.split('.')[0])
+#         current += 1
