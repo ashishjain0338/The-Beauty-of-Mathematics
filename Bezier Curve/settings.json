@@ -1,0 +1,14 @@
+{
+    "show-only-main": true,
+    "show-only-curve": true,
+    "colors": {
+        "1": "white",
+        "2": "#461B33",
+        "3": "#274E66",
+        "4": "#38DEA7",
+        "5": "#7F2D25",
+        "6": "#FFE056",
+        "7": "#2995CB",
+        "8": "pink"
+    }
+}
